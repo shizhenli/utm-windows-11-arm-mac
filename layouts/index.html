@@ -1,4 +1,4 @@
-{{ define "main" }}
+﻿{{ define "main" }}
 <section class="hero">
   <div class="hero-frame">
     <div class="hero-media">
@@ -71,10 +71,10 @@
 <section class="consult" id="consult">
   <div class="section-inner consult-grid">
     <div>
-      <p class="eyebrow" style="color:var(--accent)">NEXT STEP</p>
+      <p class="eyebrow" style="color:var(--deep-accent)">NEXT STEP</p>
       <h2>{{ .Params.consult_heading }}</h2>
       <p>{{ .Params.consult_lead }}</p>
-      <p class="consult-note">No passwords. A real reply comes from <a href="{{ partial "fallback-mailto-href.html" . }}" style="color:var(--accent)">{{ .Site.Params.email }}</a>.</p>
+      <p class="consult-note">No passwords. A real reply comes from <a href="{{ partial "fallback-mailto-href.html" . }}" style="color:var(--deep-accent)">{{ .Site.Params.email }}</a>.</p>
     </div>
     <form class="form" action="https://docs.google.com/forms/d/e/1FAIpQLSeWIEEXwIjnBnaQsVLfT_0Zb-J-VyCNhg160CFp2BF_EaEHRg/formResponse" method="POST" target="_blank">
       <input type="hidden" name="fvv" value="1">
@@ -91,3 +91,4 @@
 
 {{ partial "latest-guides.html" . }}
 {{ end }}
+
