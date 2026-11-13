@@ -12,7 +12,8 @@
 <meta name="description" content="{{ $pageDesc }}">
 {{ with .Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
-{{- if eq .Kind "404" -}}
+{{- $branch := getenv "CF_PAGES_BRANCH" -}}
+{{- if or (and $branch (ne $branch "main")) (eq .Kind "404") -}}
 <meta name="robots" content="noindex, nofollow">
 {{- else -}}
 <meta name="robots" content="index, follow">

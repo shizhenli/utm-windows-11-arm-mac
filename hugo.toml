@@ -29,5 +29,7 @@ theme_scrim = "rgba(8,12,16,0.86)"
 theme_light = true
 hero_desktop_hd_width = 1920
 hero_mobile_hd_width = 768
+[security.funcs]
+getenv = ["^CF_PAGES_BRANCH$"]
 [markup.goldmark.renderer]
 unsafe = true
