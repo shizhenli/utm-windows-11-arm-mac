@@ -1,7 +1,7 @@
 baseURL = "https://utm-windows-11-arm-mac.pages.dev/"
 languageCode = "en-us"
 title = "UTM Windows 11 ARM Help"
-enableRobotsTXT = true
+enableRobotsTXT = false
 disableKinds = ["taxonomy", "term"]
 [params]
 source = "utm-windows-11-arm-mac"
