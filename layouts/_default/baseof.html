@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -16,6 +16,6 @@
 <body>
 <header class="site-header"><a class="brand" href="/">{{ .Site.Title }}</a><nav><a href="/">Service</a><a href="/guides/">Guides</a><a href="mailto:{{ .Site.Params.email }}?subject={{ .Site.Title | urlquery }}">Contact</a></nav></header>
 <main>{{ block "main" . }}{{ end }}</main>
-<footer class="site-footer"><p>Remote help for one device at a time. Source marker: <strong>{{ .Site.Params.source }}</strong></p><p><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a> · <a href="/sitemap.xml">Sitemap</a></p></footer>
+<footer class="site-footer"><p>Remote help for one device at a time. Source marker: <strong>{{ .Site.Params.source }}</strong> · Template {{ .Site.Params.template_version }}</p><p><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a> 路 <a href="/sitemap.xml">Sitemap</a></p></footer>
 </body>
 </html>

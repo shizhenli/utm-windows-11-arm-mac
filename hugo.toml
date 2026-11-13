@@ -2,7 +2,9 @@ baseURL = "https://utm-windows-11-arm-mac.pages.dev/"
 languageCode = "en-us"
 title = "UTM Windows 11 ARM on Mac"
 enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
 [params]
+template_version = "v1.1.0"
 description = "Install Windows 11 ARM in UTM on Apple Silicon and verify network, display, and one app."
 category = "PC & Mac"
 source = "utm-windows-11-arm-mac"
