@@ -1,9 +1,9 @@
-﻿{{ define "main" }}
+{{ define "main" }}
 <section class="hero">
   <div class="hero-frame">
     <div class="hero-media">
       <picture>
-        <source media="(max-width: 760px)" srcset="/images/hero-mobile-640.webp 640w, /images/hero-mobile-768.webp {{ .Site.Params.hero_mobile_hd_width }}w" sizes="(max-width: 760px) calc(100vw - 40px), 1px" type="image/webp">
+        <source media="(max-width: 760px)" srcset="/images/hero-mobile-640.webp 640w, /images/hero-mobile-768.webp 768w{{ if ge .Site.Params.hero_mobile_hd_width 960 }}, /images/hero-mobile-960.webp 960w{{ end }}" sizes="(max-width: 760px) calc(100vw - 40px), 1px" type="image/webp">
         <img src="/images/hero-desktop-1200.webp" srcset="/images/hero-desktop-1200.webp 1200w, /images/hero-desktop-1920.webp {{ .Site.Params.hero_desktop_hd_width }}w" sizes="(max-width: 1180px) calc(100vw - 40px), 1200px" width="1200" height="675" alt="{{ .Params.hero_alt }}" title="{{ .Params.hero_title }}" fetchpriority="high">
       </picture>
     </div>
@@ -90,5 +90,17 @@
 </section>
 
 {{ partial "latest-guides.html" . }}
+<script>
+(function () {
+  var form = document.querySelector('form.form');
+  if (!form) return;
+  form.addEventListener('submit', function () {
+    var message = form.querySelector('textarea[name="entry.1462326072"]');
+    if (!message) return;
+    var prefix = 'Source: {{ .Site.Params.source }} | ';
+    if (message.value.indexOf('Source: ') !== 0) message.value = prefix + message.value;
+  });
+})();
+</script>
 {{ end }}
 

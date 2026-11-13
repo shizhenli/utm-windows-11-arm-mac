@@ -120,10 +120,11 @@ main{min-height:40vh}
   .hero-frame{max-width:calc(100% - 40px);display:flex;flex-direction:column}
   .hero-frame:after{display:none}
   .hero-overlay{position:static;transform:none;width:auto;padding:38px 24px 30px;background:var(--bg);color:var(--mobile-ink);gap:18px;order:1}
+  .hero-kicker{color:var(--mobile-kicker)}
   .hero-media{order:2}
   .hero h1{color:var(--mobile-ink);font-size:clamp(2.5rem,6vw,3.4rem)}
-  .hero-lead{color:var(--mobile-ink);opacity:.82;max-width:620px}
-  .hero-proof{color:var(--mobile-ink);opacity:.78}
+  .hero-lead{color:var(--mobile-ink);opacity:1;max-width:620px}
+  .hero-proof{color:var(--mobile-ink);opacity:1}
   .text-link{color:var(--mobile-link)}
   .hero-media{width:100%}
   .band,.consult,.latest{padding-top:60px;padding-bottom:60px}
