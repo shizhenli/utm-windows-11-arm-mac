@@ -1,9 +1,12 @@
 {{ define "main" }}
 <article class="guide">
-<p class="eyebrow">Troubleshooting guide</p>
+{{ partial "breadcrumbs.html" . }}
+<p class="eyebrow">{{ .Site.Params.guide_kicker | default "Troubleshooting guide" }}</p>
 <h1>{{ .Title }}</h1>
+<p class="guide-date"><time datetime="{{ .PublishDate.Format "2006-01-02" }}">Published {{ .PublishDate.Format "Jan 2, 2006" }}</time></p>
+{{ with .Params.categories }}<p class="guide-category">Category: <a href="/categories/{{ $.Params.category_slug }}/">{{ index . 0 }}</a></p>{{ end }}
 {{ .Content }}
 <hr>
-<p><a href="/">Back to the service page</a> · <a href="mailto:{{ .Site.Params.email }}?subject={{ .Site.Title | urlquery }}%20question&body=Source%3A%20{{ .Site.Params.source }}">Ask about this exact symptom</a></p>
+<p><a href="/">Back to the service page</a> · <a href="{{ partial "fallback-mailto-href.html" . }}">Ask about this exact symptom</a></p>
 </article>
 {{ end }}

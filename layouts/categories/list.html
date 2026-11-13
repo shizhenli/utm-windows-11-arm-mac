@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="guide-index">
+{{ partial "breadcrumbs.html" . }}
+<p class="eyebrow">{{ .Params.eyebrow | default "Browse by category" }}</p>
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+<div class="category-list">
+{{ range (where site.RegularPages "Section" "categories").ByTitle }}
+<a class="category-card" href="{{ .RelPermalink }}"><span>Category</span><h2>{{ .Title }}</h2><p>{{ .Description }}</p></a>
+{{ else }}<p>No categories yet.</p>{{ end }}
+</div>
+</article>
+{{ end }}

@@ -1,21 +1,50 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{- $pageTitle := .Title -}}
+{{- with .Params.seo_title }}{{ $pageTitle = . }}{{ end -}}
+{{- if not $pageTitle }}{{ $pageTitle = .Site.Title }}{{ end -}}
+{{- if and .IsHome (not .Params.seo_title) }}{{ $pageTitle = .Site.Title }}{{ end -}}
+{{- $pageDesc := .Params.seo_description | default .Description | default .Site.Params.description -}}
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $pageDesc }}">
+{{ with .Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
-{{ if not hugo.IsProduction }}<meta name="robots" content="noindex, nofollow">{{ else }}<meta name="robots" content="index, follow">{{ end }}
-<meta property="og:title" content="{{ .Title }}">
-<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{- if eq .Kind "404" -}}
+<meta name="robots" content="noindex, nofollow">
+{{- else -}}
+<meta name="robots" content="index, follow">
+{{- end }}
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $pageDesc }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+{{ with .Site.Params.og_image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+<style>
+:root{
+  --bg: {{ .Site.Params.theme_bg }};
+  --surface: {{ .Site.Params.theme_surface }};
+  --card: {{ .Site.Params.theme_card }};
+  --ink: {{ .Site.Params.theme_ink }};
+  --muted: {{ .Site.Params.theme_muted }};
+  --accent: {{ .Site.Params.theme_accent }};
+  --accent-ink: {{ .Site.Params.theme_accent_ink }};
+  --deep: {{ .Site.Params.theme_deep }};
+  --deep-ink: {{ .Site.Params.theme_deep_ink }};
+  --header-ink: {{ .Site.Params.theme_header_ink }};
+  --line: {{ .Site.Params.theme_line }};
+  --link: {{ .Site.Params.theme_link }};
+  --scrim: {{ .Site.Params.theme_scrim | safeCSS }};
+  --shell: 1200px;
+}
+</style>
 <link rel="stylesheet" href="/css/site.css">
 </head>
-<body>
-<header class="site-header"><a class="brand" href="/">{{ .Site.Title }}</a><nav><a href="/">Service</a><a href="/guides/">Guides</a><a href="mailto:{{ .Site.Params.email }}?subject={{ .Site.Title | urlquery }}">Contact</a></nav></header>
+<body class="site">
+<header class="site-header"><a class="brand" href="/">{{ .Site.Title }}</a><nav><a href="/">Service</a><a href="/guides/">Guides</a><a href="/categories/">Categories</a><a href="/#consult">Contact</a></nav></header>
 <main>{{ block "main" . }}{{ end }}</main>
-<footer class="site-footer"><p>Remote help for one device at a time. Source marker: <strong>{{ .Site.Params.source }}</strong> · Template {{ .Site.Params.template_version }}</p><p><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a> 路 <a href="/sitemap.xml">Sitemap</a></p></footer>
+<footer class="site-footer"><p>{{ .Site.Params.footer_line | default "Remote help for one device at a time." }}</p><p><a href="{{ partial "fallback-mailto-href.html" . }}">{{ .Site.Params.email }}</a> · <a href="/sitemap.xml">Sitemap</a></p></footer>
 </body>
 </html>

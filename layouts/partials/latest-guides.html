@@ -1,0 +1,25 @@
+{{- $guides := where site.RegularPages "Section" "guides" -}}
+{{- $guides = $guides.ByPublishDate.Reverse -}}
+{{- $items := first 10 $guides -}}
+<section class="latest">
+  <div class="section-inner">
+    <div class="latest-head">
+      <div>
+        <p class="eyebrow">{{ .Site.Params.latest_kicker | default "FROM THE BLOG" }}</p>
+        <h2>{{ .Site.Params.latest_title | default "Latest troubleshooting guides" }}</h2>
+      </div>
+      <a href="/guides/">All guides</a>
+    </div>
+    {{ if $items }}
+    <div class="latest-list">
+      {{ range $items }}
+      <article class="latest-item">
+        <time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "Jan 2, 2006" }}</time>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Description }}</p>
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}<p>No published guides yet.</p>{{ end }}
+  </div>
+</section>

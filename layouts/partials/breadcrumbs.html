@@ -1,0 +1,28 @@
+{{- if not .IsHome -}}
+{{- $items := slice (dict "name" "Home" "url" site.Home.Permalink) -}}
+{{- if eq .RelPermalink "/categories/" -}}
+  {{- $items = $items | append (dict "name" "Categories" "url" .Permalink) -}}
+{{- else if eq .Section "categories" -}}
+  {{- with site.GetPage "/categories" -}}{{- $items = $items | append (dict "name" "Categories" "url" .Permalink) -}}{{- end -}}
+  {{- $items = $items | append (dict "name" .Title "url" .Permalink) -}}
+{{- else if eq .Section "guides" -}}
+  {{- if eq .RelPermalink "/guides/" -}}
+    {{- $items = $items | append (dict "name" "Guides" "url" .Permalink) -}}
+  {{- else -}}
+    {{- with site.GetPage "/guides" -}}{{- $items = $items | append (dict "name" "Guides" "url" .Permalink) -}}{{- end -}}
+    {{- $items = $items | append (dict "name" .Title "url" .Permalink) -}}
+  {{- end -}}
+{{- else -}}
+  {{- $items = $items | append (dict "name" .Title "url" .Permalink) -}}
+{{- end -}}
+<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>
+{{- range $index, $item := $items -}}
+<li>{{ if lt (add $index 1) (len $items) }}<a href="{{ $item.url }}">{{ $item.name }}</a>{{ else }}<span aria-current="page">{{ $item.name }}</span>{{ end }}</li>
+{{- end -}}
+</ol></nav>
+{{- $crumbs := slice -}}
+{{- range $index, $item := $items -}}
+{{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" (add $index 1) "name" $item.name "item" $item.url) -}}
+{{- end -}}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $crumbs | jsonify | safeJS }}</script>
+{{- end -}}

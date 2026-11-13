@@ -1,1 +1,17 @@
-{{ define "main" }}<article><h1>{{ .Title }}</h1>{{ .Content }}{{ range .Pages }}<p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}</article>{{ end }}
+{{ define "main" }}
+<article class="guide-index">
+{{ partial "breadcrumbs.html" . }}
+<p class="eyebrow">{{ .Params.eyebrow | default "Troubleshooting library" }}</p>
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+<div class="guide-list">
+{{ range .Pages.ByPublishDate.Reverse }}
+<article class="guide-list-item">
+  <time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "Jan 2, 2006" }}</time>
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <p>{{ .Description }}</p>
+</article>
+{{ else }}<p>No published guides yet.</p>{{ end }}
+</div>
+</article>
+{{ end }}

@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://utm-windows-11-arm-mac.pages.dev/sitemap.xml

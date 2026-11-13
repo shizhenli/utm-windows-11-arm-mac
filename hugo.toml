@@ -1,13 +1,33 @@
 baseURL = "https://utm-windows-11-arm-mac.pages.dev/"
 languageCode = "en-us"
-title = "UTM Windows 11 ARM on Mac"
+title = "UTM Windows 11 ARM Help"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 [params]
-template_version = "v1.1.0"
-description = "Install Windows 11 ARM in UTM on Apple Silicon and verify network, display, and one app."
-category = "PC & Mac"
 source = "utm-windows-11-arm-mac"
+description = "Remote help with UTM Windows 11 ARM installs when the installer cannot find the virtual disk."
 email = "hello@handytasklab.com"
+fallback_email_subject = "UTM Windows 11 ARM help"
+fallback_email_fields = ["Mac model/macOS/UTM version", "ISO architecture", "VM storage settings", "Installer error"]
+og_image = "images/social.jpg"
+footer_line = "Remote help for one device at a time."
+latest_kicker = "FROM THE BLOG"
+latest_title = "UTM Windows 11 ARM Help Guides"
+theme_bg = "#EEF2F9"
+theme_surface = "#F6F8FC"
+theme_card = "#FFFFFF"
+theme_ink = "#182018"
+theme_muted = "#5D655F"
+theme_accent = "#354C88"
+theme_accent_ink = "#FFFFFF"
+theme_deep = "#242425"
+theme_deep_ink = "#FFFFFF"
+theme_header_ink = "#182018"
+theme_line = "#D2D5D8"
+theme_link = "#212F54"
+theme_scrim = "rgba(8,12,16,0.86)"
+theme_light = true
+hero_desktop_hd_width = 1920
+hero_mobile_hd_width = 768
 [markup.goldmark.renderer]
 unsafe = true

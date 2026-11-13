@@ -1,0 +1,12 @@
+{{- $subject := .Site.Params.fallback_email_subject | default "Project inquiry" -}}
+{{- $fields := .Site.Params.fallback_email_fields | default (slice "Device / OS" "Exact symptom" "What you have tried") -}}
+{{- $body := printf "Source: %s\n\n" .Site.Params.source -}}
+{{- range $fields -}}
+  {{- $body = printf "%s%s:\n" $body . -}}
+{{- end -}}
+{{- $body = replace $body "\n" "\r\n" -}}
+{{- $subjectEnc := $subject | urlquery -}}
+{{- $bodyEnc := $body | urlquery -}}
+{{- $subjectEnc = replace $subjectEnc "+" "%20" -}}
+{{- $bodyEnc = replace $bodyEnc "+" "%20" -}}
+{{- return (printf "mailto:%s?subject=%s&body=%s" .Site.Params.email $subjectEnc $bodyEnc) -}}
