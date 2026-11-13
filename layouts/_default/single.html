@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="guide">
+<p class="eyebrow">Troubleshooting guide</p>
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+<hr>
+<p><a href="/">Back to the service page</a> · <a href="mailto:{{ .Site.Params.email }}?subject={{ .Site.Title | urlquery }}%20question&body=Source%3A%20{{ .Site.Params.source }}">Ask about this exact symptom</a></p>
+</article>
+{{ end }}

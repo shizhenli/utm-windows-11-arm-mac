@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="service">
+<p class="eyebrow">{{ .Site.Params.category }} · remote help</p>
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+<div class="cta">
+<a class="button" href="mailto:{{ .Site.Params.email }}?subject={{ .Site.Title | urlquery }}&body=Source%3A%20{{ .Site.Params.source }}%0A%0AWhat%20is%20failing%3F%0ADevice%20and%20OS%3F%0AWhat%20have%20you%20tried%3F">Request a scoped session</a>
+<p class="small">Include the device, OS, exact symptom, and what you already tried. No passwords in the first email.</p>
+</div>
+</article>
+{{ end }}
