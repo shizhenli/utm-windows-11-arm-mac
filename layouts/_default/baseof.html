@@ -49,8 +49,8 @@
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body class="site">
-<header class="site-header"><a class="brand" href="/">{{ .Site.Title }}</a><nav><a href="/">Service</a><a href="/guides/">Guides</a><a href="/categories/">Categories</a><a href="/#consult">Contact</a></nav></header>
+<header class="site-header"><a class="brand" href="/">{{ .Site.Title }}</a><nav><a href="/">Service</a><a href="/guides/">Guides</a>{{- $cats := where site.RegularPages "Section" "categories" -}}<a href="{{ if eq (len $cats) 1 }}{{ (index $cats 0).RelPermalink }}{{ else }}/categories/{{ end }}">Categories</a><a href="/#consult">Contact</a></nav></header>
 <main>{{ block "main" . }}{{ end }}</main>
-<footer class="site-footer"><p>{{ .Site.Params.footer_line | default "Remote help for one device at a time." }}</p><p><a href="{{ partial "fallback-mailto-href.html" . }}">{{ .Site.Params.email }}</a> · <a href="/sitemap.xml">Sitemap</a></p></footer>
+<footer class="site-footer"><p>{{ .Site.Params.footer_line | default "Remote help for one device at a time." }}</p><p><a href="{{ partial "fallback-mailto-href.html" . }}">{{ .Site.Params.email }}</a> · <a href="/categories/">All categories</a> · <a href="/sitemap.xml">Sitemap</a></p></footer>
 </body>
 </html>
