@@ -5,7 +5,7 @@
 <h1>{{ .Title }}</h1>
 <p class="guide-date"><time datetime="{{ .PublishDate.Format "2006-01-02" }}">Published {{ .PublishDate.Format "Jan 2, 2006" }}</time></p>
 {{ with .Params.categories }}<p class="guide-category">Category: <a href="/categories/{{ $.Params.category_slug }}/">{{ index . 0 }}</a></p>{{ end }}
-{{ .Content }}
+<div class="guide-body">{{ .Content }}</div>
 <hr>
 <p><a href="/">Back to the service page</a> · <a href="{{ partial "fallback-mailto-href.html" . }}">Ask about this exact symptom</a></p>
 </article>
