@@ -17,7 +17,8 @@ preview_pdf: "/downloads/utm-windows-11-arm-mac-Free-Preview.pdf"
 
 <div class="product-buybox">
   <div><p class="product-kicker">What you get</p><p class="product-price">USD 15.00</p><p class="small">One-time payment. Instant digital download. The checkout button opens after the Live product is confirmed.</p></div>
-  <div class="product-cta-disabled" aria-disabled="true">Checkout opens after price confirmation</div>
+  <a class="button product-buy" href="https://www.creem.io/product/prod_56HVJnhkDfxuajxueUErI0" rel="noopener">Buy now — USD 15.00</a>
+<p class="small">Secure checkout by Creem. Instant ZIP download after payment.</p>
 </div>
 
 <h2>Three routes for this failure</h2>
