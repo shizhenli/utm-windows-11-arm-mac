@@ -3,7 +3,7 @@ title: "UTM Windows 11 ARM Diagnostic Kit"
 description: "A three-route field guide for missing network adapters, shared folders, and Windows 11 ARM boot problems"
 layout: "product"
 draft: false
-price: ""
+price: "15.00"
 preview_pdf: "/downloads/utm-windows-11-arm-mac-Free-Preview.pdf"
 ---
 
@@ -16,7 +16,7 @@ preview_pdf: "/downloads/utm-windows-11-arm-mac-Free-Preview.pdf"
 </div>
 
 <div class="product-buybox">
-  <div><p class="product-kicker">What you get</p><p class="product-price">Price confirmed before launch</p><p class="small">The checkout button opens only after the price and payment product are confirmed.</p></div>
+  <div><p class="product-kicker">What you get</p><p class="product-price">USD 15.00</p><p class="small">One-time payment. Instant digital download. The checkout button opens after the Live product is confirmed.</p></div>
   <div class="product-cta-disabled" aria-disabled="true">Checkout opens after price confirmation</div>
 </div>
 
